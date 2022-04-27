@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "bf5d7106-555b-44eb-bf60-e80571017aa7",
+		"name": "productsapp-automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"It should have an Id\", function(){\r",
+							" pm.response.to.have.jsonBody(\"[0].Id\")\r",
+							"})\r",
+							"\r",
+							"pm.test(\"value of [1].Id should be 2\", function(){\r",
+							" pm.expect(2).to.equal(jsonData[1].Id)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"value of [2].Id should be 3\", function(){\r",
+							" pm.expect(3).to.equal(jsonData[2].Id)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"It should have an Id\", function(){\r",
+							" pm.response.to.have.jsonBody(\"[0].Id\")})\r",
+							"\r",
+							"pm.test(\"It should have an Id\", function(){\r",
+							" pm.response.to.have.jsonBody(\"[1].Id\")})\r",
+							"\r",
+							"pm.test(\"Id should be\", function(){\r",
+							" pm.response.to.have.jsonBody(\"[2].Id\")})\r",
+							"\r",
+							"pm.test(\"200 OK\", function(){\r",
+							" pm.response.to.have.status(200)});\r",
+							"\r",
+							"pm.test(\"response time should be less than 4000MS\", function(){\r",
+							" pm.expect(pm.response.responseTime).to.be.below(4000)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"It should have an Id\", function(){\r",
+							" pm.response.to.have.jsonBody(\"2\")})\r",
+							"\r",
+							"pm.test(\"Tomato Soup as an Name\", function(){\r",
+							" pm.expect(\"Tomato Soup\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response to Yo-yo as an Name\", function(){\r",
+							" pm.expect(\"Yo-yo\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Hammer as an Name\", function(){\r",
+							" pm.expect(\"Hammer\")\r",
+							"});\r",
+							"pm.test(\"time less than 5000MS\", function(){\r",
+							" pm.expect(pm.response.responseTime).to.be.below(5000)\r",
+							"})\r",
+							"pm.test(\"iPhone 13 Pro Max as an Name\", function(){\r",
+							" pm.expect(\"iphone 13 Pro Max\")\r",
+							"});\r",
+							"pm.test(\"Cactus as an name\", function(){\r",
+							" pm.expect(\"Cactus\")\r",
+							"});\r",
+							"pm.test(\"Potato Soup as to be 42\", function(){\r",
+							" pm.expect(\"42\")\r",
+							"});\r",
+							"pm.test(\"iPhone 13 Pro Max as to be 1399.00\", function(){\r",
+							" pm.expect(\"1399.00\")\r",
+							"});\r",
+							"pm.test(\"Cactus as to be 13.98\", function(){\r",
+							" pm.expect(\"13.98\")\r",
+							"});\r",
+							"pm.test(\"time less than 2000MS\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"pm.test(\"time less than 1000MS\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000)\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Name\");\r",
+							"})\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Id\");\r",
+							"})\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Price\");\r",
+							"})\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Category\");\r",
+							"})\r",
+							"pm.test(\"Status code name has string\",() => {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44305/api/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44305",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "var jsonData = JSON.parse(responseBody);\n\njsonData\\[0\\].Id;"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"I should have an Id\", function(){\r",
+							" pm.expect(jsonData).to.have.property(\"Id\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"It should have a Name\", function(){\r",
+							" pm.expect(jsonData).to.have.property(\"Name\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"It should have Category\", function(){\r",
+							" pm.expect(jsonData).to.have.property(\"Category\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"It should have Price\", function(){\r",
+							" pm.expect(jsonData).to.have.property(\"Price\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"200 OK\", function(){\r",
+							" pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"time less than 1000MS\", function(){\r",
+							" pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44305/api/products/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44305",
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
